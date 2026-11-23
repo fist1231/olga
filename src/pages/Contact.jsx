@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { bySlug, site } from "../data/site.js";
+import { useHydrated } from "../useHydrated.js";
 import "./Contact.css";
 
 const topics = ["Buying a painting", "Commission", "Collaboration", "Framing", "Something else"];
 
 export default function Contact() {
-  const [params] = useSearchParams();
+  // The pre-built page has no ?painting= or ?topic=; those are applied right after the page loads.
+  const [rawParams] = useSearchParams();
+  const hydrated = useHydrated();
+  const params = hydrated ? rawParams : new URLSearchParams();
   const painting = bySlug[params.get("painting")];
   const initialTopic = painting
     ? "Buying a painting"
@@ -65,7 +69,8 @@ export default function Contact() {
         <p>Questions about a painting, a commission, or a collaboration? Send Olga a message.</p>
       </header>
 
-      <form className="contact-form" onSubmit={onSubmit} noValidate>
+      {/* key: redraw the form once after load so a ?painting= link fills in the fields */}
+      <form className="contact-form" onSubmit={onSubmit} noValidate key={hydrated ? "ready" : "first"}>
         <div className="field-row">
           <Field label="Name" name="name" autoComplete="name" error={errors.name} />
           <Field label="Email" name="email" type="email" autoComplete="email" error={errors.email} />

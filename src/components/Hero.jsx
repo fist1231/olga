@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useHydrated } from "../useHydrated.js";
 import "./Hero.css";
 
 const lines = ["Nature, travel,", "and the colors", "in between."];
@@ -12,7 +13,9 @@ export default function Hero() {
   const portraitY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   // Scroll-linked effects ignore MotionConfig, so switch them off by hand for reduced-motion visitors.
-  const reduce = useReducedMotion();
+  // (The pre-built page can't know the setting, so it is read once the page has loaded.)
+  const hydrated = useHydrated();
+  const reduce = useReducedMotion() && hydrated;
 
   return (
     <section className="hero" ref={ref}>

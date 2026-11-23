@@ -10,22 +10,16 @@ import About from "./pages/About.jsx";
 import Framing from "./pages/Framing.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import { applyHead } from "./head.js";
 
-const titles = {
-  "/": "Olga Tislina — Paintings inspired by nature and travel",
-  "/shop": "Shop — Olga Tislina",
-  "/about": "About — Olga Tislina",
-  "/framing": "Framing & mounting — Olga Tislina",
-  "/contact": "Contact — Olga Tislina",
-};
 
 export default function App() {
   const location = useLocation();
 
-  // Start each new page at the top, and set the browser tab title.
+  // Start each new page at the top, and set its tab title, search description, and link-preview tags.
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-    if (titles[location.pathname]) document.title = titles[location.pathname];
+    applyHead(location.pathname);
   }, [location.pathname]);
 
   return (

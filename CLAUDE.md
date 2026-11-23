@@ -13,6 +13,14 @@ the interface stays quiet. See PLAN.md for status and open questions.
 - Content lives in `src/data/`: `paintings.js` (all works) and `site.js` (bio, categories, featured list, helpers).
   Change content there, not inside components.
 
+## SEO (see `src/seo.js`)
+- `npm run build` also pre-renders every page to HTML (`src/entry-server.jsx` → `scripts/prerender.mjs`),
+  then writes `404.html`, `sitemap.xml`, `robots.txt`. New page or route: add it to `src/seo.js` (`pages`, `staticPaths`).
+- Page titles/descriptions/structured data live only in `src/seo.js`; don't set `document.title` in components.
+- Pre-built HTML can't know the URL's `?query` or the motion setting: read those through `useHydrated()`
+  (see Shop, Contact, Hero), or the browser logs hydration errors. Don't read `window` while rendering.
+- Public address comes from `SITE_URL` (Vercel env var); see `vite.config.js`.
+
 ## Design rules
 The art supplies the color: the interface is clean and quiet, and color comes from Olga's paintings.
 - **Fonts:** headlines use Fraunces (`--font-display`, self-hosted via `@fontsource-variable/fraunces`,

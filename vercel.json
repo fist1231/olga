@@ -1,5 +1,13 @@
 {
-  "rewrites": [{ "source": "/((?!images/|assets/).*)", "destination": "/index.html" }],
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/shop/p/:slug", "destination": "/shop/:slug", "permanent": true },
+    { "source": "/about-1", "destination": "/about", "permanent": true },
+    { "source": "/contact-1", "destination": "/contact", "permanent": true },
+    { "source": "/framing-mounting", "destination": "/framing", "permanent": true },
+    { "source": "/news", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/images/(.*)",

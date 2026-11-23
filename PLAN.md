@@ -32,6 +32,10 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
       for card tints, page tints, and the featured-gallery glow); colored hero headline and paint washes;
       bold collaborate section; palette strip in the footer. Contrast re-checked (all AA).
 
+- [x] SEO: every page is pre-built as real HTML at build time (`scripts/prerender.mjs`), with its own title,
+      description, canonical link, link-preview (Open Graph) tags, and Google structured data (`src/seo.js`).
+      `sitemap.xml` + `robots.txt` generated; unknown URLs return a real 404; old Squarespace URLs redirect.
+
 ## Waiting on Olga
 - [ ] **Stripe:** create a Payment Link for each painting she wants to sell online, then paste each link into `stripeLink`
 - [ ] **Contact form:** create a free form at formspree.io and put its ID in a `.env` file as `VITE_FORMSPREE_ID=xxxx`
@@ -42,6 +46,15 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [ ] **Prints:** confirm print prices/sizes for drawings and for sold paintings with prints (Wild Flowers, Sunflowers)
 - [ ] **Commissions:** confirm she takes commissions (the home page and contact form mention them)
 - [ ] **Domain:** choose the web address, and when to switch off Squarespace. Nothing on Squarespace has been changed.
+
+## SEO launch checklist (when the domain is chosen)
+- [ ] In Vercel → Settings → Environment Variables, set `SITE_URL` (e.g. `https://olgatislina.com`) and redeploy.
+      Until then the site uses Vercel's production address in its search tags and sitemap.
+- [ ] Add the site to Google Search Console, verify the domain, and submit `/sitemap.xml`.
+- [ ] Check a painting page in Google's Rich Results Test. Expect warnings about missing shipping/returns info:
+      add those only once Olga confirms her policies.
+- [ ] After the domain moves from Squarespace, spot-check that old links redirect (e.g. `/shop/p/favorite-cafe`).
+      The redirects are in `vercel.json` and assume the painting slugs didn't change.
 
 ## Next
 - [ ] Deploy a Vercel preview link to share with Olga (only after the user approves)
