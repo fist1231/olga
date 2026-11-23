@@ -7,7 +7,7 @@ export const site = {
   instagramHandle: "@olgatislina_art",
   // Contact form messages are emailed here through FormSubmit (formsubmit.co, free, no account).
   // The first message sends Olga an "Activate Form" email; nothing is delivered until she clicks it.
-  // After activating, FormSubmit gives a random alias: put it in .env and Vercel as VITE_FORMSUBMIT_KEY
+  // After activating, FormSubmit gives a random alias: put it in the .env file as VITE_FORMSUBMIT_KEY=... and rebuild
   // so the email address no longer appears in the site's code.
   contactEmail: "olga_tislina@yahoo.com",
   formKey: import.meta.env.VITE_FORMSUBMIT_KEY || "olga_tislina@yahoo.com",

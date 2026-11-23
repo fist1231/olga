@@ -4,8 +4,7 @@
 // and the browser, which swaps these tags when a visitor moves between pages (see App.jsx).
 import { bio, bySlug, categories, formatPrice, paintings, site } from "./data/site.js";
 
-// The site's public web address, with no trailing slash. Set SITE_URL in Vercel once the domain is chosen.
-// Vite fills this in at build time (see vite.config.js).
+// The site's public web address, with no trailing slash. Set it in vite.config.js; Vite fills it in at build time.
 export const SITE_URL = import.meta.env.VITE_SITE_URL;
 
 const DEFAULT_IMAGE = bySlug["rose-garden-crete"].images[0];

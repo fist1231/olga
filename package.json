@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "package": "npm run build && rm -f olga-site.zip && cd dist && zip -qr ../olga-site.zip . -x '*.DS_Store' && echo 'Created olga-site.zip: upload it to public_html in Hostinger and extract it.'",
     "lint": "oxlint",
     "preview": "vite preview"
   },
