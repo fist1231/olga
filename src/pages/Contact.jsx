@@ -54,7 +54,9 @@ export default function Contact() {
       if (!ok) console.warn("Contact form not sent:", result.message || res.status);
       setStatus(ok ? "sent" : "error");
       if (ok) form.reset();
-    } catch {
+    } catch (err) {
+      // Blocked before reaching FormSubmit (offline, ad blocker, VPN, or a security check).
+      console.warn("Contact form not sent: couldn't reach formsubmit.co.", err);
       setStatus("error");
     }
   }
