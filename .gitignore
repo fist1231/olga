@@ -3,3 +3,5 @@
 node_modules/
 .playwright-mcp/
 dist/
+dist-ssr/
+olga-site.zip

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { bySlug, site } from "../data/site.js";
+import { useHydrated } from "../useHydrated.js";
 import "./Contact.css";
 
 const topics = ["Buying a painting", "Commission", "Collaboration", "Framing", "Something else"];
 
 export default function Contact() {
-  const [params] = useSearchParams();
+  // The pre-built page has no ?painting= or ?topic=; those are applied right after the page loads.
+  const [rawParams] = useSearchParams();
+  const hydrated = useHydrated();
+  const params = hydrated ? rawParams : new URLSearchParams();
   const painting = bySlug[params.get("painting")];
   const initialTopic = painting
     ? "Buying a painting"
@@ -31,19 +35,25 @@ export default function Contact() {
       return;
     }
 
-    if (!site.formspreeId) {
-      setStatus("error");
-      return;
-    }
+    // Extra fields read by FormSubmit: email subject, a tidy table layout, and replies go to the visitor.
+    data.set("_subject", painting ? `Website inquiry: ${painting.title}` : `Website message: ${data.get("topic")}`);
+    data.set("_template", "table");
+    data.set("_captcha", "false");
+    data.set("_replyto", email);
+
     setStatus("sending");
     try {
-      const res = await fetch(`https://formspree.io/f/${site.formspreeId}`, {
+      const res = await fetch(`https://formsubmit.co/ajax/${site.formKey}`, {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
-      setStatus(res.ok ? "sent" : "error");
-      if (res.ok) form.reset();
+      const result = await res.json().catch(() => ({}));
+      const ok = res.ok && String(result.success) === "true";
+      // FormSubmit explains failures here (e.g. "This form needs Activation"): visible in the browser's console.
+      if (!ok) console.warn("Contact form not sent:", result.message || res.status);
+      setStatus(ok ? "sent" : "error");
+      if (ok) form.reset();
     } catch {
       setStatus("error");
     }
@@ -65,7 +75,8 @@ export default function Contact() {
         <p>Questions about a painting, a commission, or a collaboration? Send Olga a message.</p>
       </header>
 
-      <form className="contact-form" onSubmit={onSubmit} noValidate>
+      {/* key: redraw the form once after load so a ?painting= link fills in the fields */}
+      <form className="contact-form" onSubmit={onSubmit} noValidate key={hydrated ? "ready" : "first"}>
         <div className="field-row">
           <Field label="Name" name="name" autoComplete="name" error={errors.name} />
           <Field label="Email" name="email" type="email" autoComplete="email" error={errors.email} />
@@ -97,14 +108,15 @@ export default function Contact() {
 
         {status === "error" && (
           <p className="form-error" role="alert">
-            {site.formspreeId
-              ? "The message didn’t send. Check your connection and try again, or message Olga on Instagram."
-              : "The contact form isn’t connected yet. For now, message Olga on Instagram."}{" "}
+            The message didn’t send. Check your connection and try again, or message Olga on Instagram{" "}
             <a href={site.instagram} target="_blank" rel="noreferrer">
               {site.instagramHandle}
             </a>
           </p>
         )}
+
+        {/* Spam trap: hidden from people, but bots fill it in and FormSubmit then discards the message. */}
+        <input type="text" name="_honey" className="visually-hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
         <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send message"}

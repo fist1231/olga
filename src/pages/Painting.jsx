@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import Lightbox from "../components/Lightbox.jsx";
@@ -43,11 +43,6 @@ export default function Painting() {
   const [zoomed, setZoomed] = useState(false);
   const close = useCallback(() => setZoomed(false), []);
 
-  // Each painting URL mounts a fresh page (see App.jsx), so only the tab title needs updating here.
-  useEffect(() => {
-    if (p) document.title = `${p.title} — ${site.artist}`;
-  }, [p]);
-
   if (!p) return <NotFound />;
 
   const img = p.images[active] || p.images[0];
@@ -72,6 +67,7 @@ export default function Painting() {
                 alt={p.title}
                 width={img.width}
                 height={img.height}
+                fetchPriority="high"
                 transition={{ type: "spring", stiffness: 260, damping: 32 }}
               />
             )}

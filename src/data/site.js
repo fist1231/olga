@@ -5,8 +5,12 @@ export const site = {
   brand: "I.F. Love Art",
   instagram: "https://www.instagram.com/olgatislina_art/",
   instagramHandle: "@olgatislina_art",
-  // Free form backend: create a form at formspree.io and put its ID in .env as VITE_FORMSPREE_ID
-  formspreeId: import.meta.env.VITE_FORMSPREE_ID || "",
+  // Contact form messages are emailed here through FormSubmit (formsubmit.co, free, no account).
+  // The first message sends Olga an "Activate Form" email; nothing is delivered until she clicks it.
+  // After activating, FormSubmit gives a random alias: put it in the .env file as VITE_FORMSUBMIT_KEY=... and rebuild
+  // so the email address no longer appears in the site's code.
+  contactEmail: "olga_tislina@yahoo.com",
+  formKey: import.meta.env.VITE_FORMSUBMIT_KEY || "olga_tislina@yahoo.com",
 };
 
 // Olga's own words from her About page, kept as written.

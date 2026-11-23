@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import PaintingCard from "../components/PaintingCard.jsx";
+import { useHydrated } from "../useHydrated.js";
 import { categories, paintings } from "../data/site.js";
 import "./Shop.css";
 
@@ -9,7 +10,10 @@ const dots = Object.fromEntries(categories.map((c) => [c.name, c.dot]));
 
 export default function Shop() {
   const [params, setParams] = useSearchParams();
-  const active = filters.includes(params.get("category")) ? params.get("category") : "All";
+  // The pre-built page shows "All"; a shared ?category= link is applied right after the page loads.
+  const hydrated = useHydrated();
+  const asked = hydrated ? params.get("category") : null;
+  const active = filters.includes(asked) ? asked : "All";
   const shown = active === "All" ? paintings : paintings.filter((p) => p.category === active);
   const available = shown.filter((p) => p.status !== "sold").length;
 
