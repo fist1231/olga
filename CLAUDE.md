@@ -36,7 +36,7 @@ The art supplies the color: the interface is clean and quiet, and color comes fr
 ## Motion rules
 - Wrap is `<MotionConfig reducedMotion="user">`. Scroll-linked effects (`useScroll` / `useTransform`) are NOT
   covered by that, so check `useReducedMotion()` and turn them off by hand.
-- Keep motion to a few deliberate moments: hero load + paint washes, story reveal, featured showcase (color glow
+- Keep motion to a few deliberate moments: hero load + paint washes, featured showcase (color glow
   crossfades per painting), filter, zoom. No fade-in on every section.
 - Animate only `transform` and `opacity` for continuous/scroll effects (no animated blur), and turn CSS keyframe
   animations off in `@media (prefers-reduced-motion: reduce)`.

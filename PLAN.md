@@ -17,7 +17,7 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [x] Converted images to WebP (`public/images/paintings/`, full size + `-sm` thumbnail)
 - [x] Design system: colors, type scale, spacing in `src/styles/global.css`
 - [x] Nav: blurred sticky bar that turns dark over dark sections; full-screen mobile menu
-- [x] Home: hero with line-by-line headline + portrait parallax, word-by-word story reveal,
+- [x] Home: hero with line-by-line headline + portrait parallax, story quote (static, no animation by request),
       sticky "Featured works" showcase, collection tiles, collaborate banner
 - [x] Shop: category filter with sliding pill + animated re-flow, sold badges, link-shareable filters (`/shop?category=Watercolor`)
 - [x] Painting page: large view, extra photos, full-screen zoom, Buy/Inquire button, "More" suggestions
