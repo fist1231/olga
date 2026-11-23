@@ -50,6 +50,8 @@ export default function Contact() {
       });
       const result = await res.json().catch(() => ({}));
       const ok = res.ok && String(result.success) === "true";
+      // FormSubmit explains failures here (e.g. "This form needs Activation"): visible in the browser's console.
+      if (!ok) console.warn("Contact form not sent:", result.message || res.status);
       setStatus(ok ? "sent" : "error");
       if (ok) form.reset();
     } catch {
