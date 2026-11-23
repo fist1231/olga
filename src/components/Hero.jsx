@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useHydrated } from "../useHydrated.js";
@@ -36,8 +36,11 @@ export default function Hero() {
             Olga Tislina, painter
           </motion.p>
           <h1 aria-label={lines.join(" ")}>
+            {/* The spaces between lines keep the heading's text readable to search engines. */}
             {lines.map((line, i) => (
-              <span className="hero-line" key={line} aria-hidden="true">
+              <Fragment key={line}>
+                {i > 0 && " "}
+              <span className="hero-line" aria-hidden="true">
                 <motion.span
                   className={`hero-ink hero-ink-${i}`}
                   initial={{ y: "105%" }}
@@ -47,6 +50,7 @@ export default function Hero() {
                   {line}
                 </motion.span>
               </span>
+              </Fragment>
             ))}
           </h1>
           <motion.div

@@ -117,7 +117,7 @@ const pages = {
   },
   "/framing": {
     title: `Framing and mounting options | ${site.artist}`,
-    description: "Frame and mounting options for Olga Tislina's paintings and prints: wood or acrylic frames, full-bleed, mat, or float mounting.",
+    description: "How Olga Tislina's paintings and prints can be framed and mounted. Ask Olga which option suits your piece.",
     schema: [crumbs([["Home", "/"], ["Framing & mounting", "/framing"]])],
   },
   "/contact": {
@@ -149,7 +149,7 @@ export function metaFor(pathname) {
       type: "product",
       schema: [
         paintingSchema(p, url),
-        crumbs([["Home", "/"], ["Shop", "/shop"], [p.category, `/shop?category=${encodeURIComponent(p.category)}`], [p.title, path]]),
+        crumbs([["Home", "/"], ["Shop", "/shop"], [p.title, path]]),
       ],
     };
   }

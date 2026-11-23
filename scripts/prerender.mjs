@@ -42,8 +42,7 @@ for (const path of allPaths) {
 }
 await writeFile(join(dist, "404.html"), page("/404"));
 
-const today = new Date().toISOString().slice(0, 10);
-const urls = allPaths.map((p) => `  <url><loc>${esc(metaFor(p).canonical)}</loc><lastmod>${today}</lastmod></url>`);
+const urls = allPaths.map((p) => `  <url><loc>${esc(metaFor(p).canonical)}</loc></url>`);
 await writeFile(
   join(dist, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`,

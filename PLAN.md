@@ -41,6 +41,7 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [ ] **Contact form:** create a free form at formspree.io and put its ID in a `.env` file as `VITE_FORMSPREE_ID=xxxx`
       (and in Vercel's environment variables). Until then the form tells visitors to message her on Instagram.
 - [ ] **Framing page:** confirm the frame and mounting options. The old text may have been Squarespace template copy.
+      Once confirmed, the framing page's search description in `src/seo.js` can name the options.
 - [ ] **Look & feel:** does Olga like the font (Fraunces) and the amount of color? Both are easy to adjust.
 - [ ] **Featured works:** confirm the 5 paintings in `featuredSlugs` (`src/data/site.js`)
 - [ ] **Prints:** confirm print prices/sizes for drawings and for sold paintings with prints (Wild Flowers, Sunflowers)
