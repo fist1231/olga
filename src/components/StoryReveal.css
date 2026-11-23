@@ -1,0 +1,19 @@
+.story {
+  padding: var(--s16) 0;
+  background: var(--mist);
+}
+
+.story-quote {
+  margin: 0;
+  max-width: 20em;
+  font-size: var(--t-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.story-quote footer {
+  margin-top: var(--s6);
+  font-size: var(--t-lede);
+  letter-spacing: -0.011em;
+}

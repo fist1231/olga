@@ -1,0 +1,94 @@
+.about-hero {
+  padding-top: calc(var(--nav-h) + var(--s8));
+  padding-bottom: var(--s12);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--s8);
+  align-items: center;
+}
+
+.about-portrait {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-copy h1 {
+  font-size: var(--t-display);
+}
+
+.about-bio {
+  margin: var(--s4) 0;
+  max-width: 32em;
+  font-size: var(--t-lede);
+  line-height: 1.45;
+  color: #424245;
+}
+
+.about-facts {
+  background: var(--mist);
+  padding: var(--s12) 0;
+}
+
+.about-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s6);
+}
+
+.about-facts h2 {
+  font-size: var(--t-h3);
+  margin-bottom: var(--s2);
+}
+
+.about-facts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s2);
+}
+
+.about-facts li {
+  display: grid;
+}
+
+.about-facts li span,
+.about-places {
+  color: var(--graphite);
+}
+
+.about-cta {
+  padding: var(--s16) var(--gutter);
+  text-align: center;
+}
+
+.about-cta h2 {
+  font-size: var(--t-display);
+}
+
+.about-cta-actions {
+  margin-top: var(--s4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s4);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    padding-top: calc(var(--nav-h) + var(--s4));
+  }
+
+  .about-facts-grid {
+    grid-template-columns: 1fr;
+  }
+}

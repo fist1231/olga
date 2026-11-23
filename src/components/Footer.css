@@ -1,0 +1,51 @@
+.footer {
+  background: var(--mist);
+  color: var(--graphite);
+  font-size: var(--t-small);
+  padding: var(--s8) 0 var(--s4);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s6);
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.footer-brand img {
+  width: 88px;
+  mix-blend-mode: multiply; /* blends the logo's white background into the gray footer */
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: var(--s1) var(--s6);
+  align-content: center;
+}
+
+.footer-links a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-legal {
+  margin-top: var(--s6);
+  font-size: 0.75rem;
+}
+
+.footer-legal p {
+  padding-top: var(--s3);
+  border-top: 1px solid var(--hairline);
+}

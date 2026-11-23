@@ -1,0 +1,82 @@
+.filter {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  background: var(--mist);
+  border-radius: 999px;
+}
+
+.filter button {
+  position: relative;
+  min-height: 40px;
+  padding: 0 var(--s3);
+  border: 0;
+  background: none;
+  border-radius: 999px;
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--graphite);
+  cursor: pointer;
+}
+
+.filter button.is-active {
+  color: var(--ink);
+}
+
+.filter-pill {
+  position: absolute;
+  inset: 0;
+  background: var(--white);
+  border-radius: 999px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.filter-label {
+  position: relative;
+}
+
+.shop-count {
+  margin-top: var(--s3);
+  font-size: var(--t-small);
+  color: var(--graphite);
+}
+
+.shop-grid {
+  list-style: none;
+  margin: var(--s4) 0 var(--s16);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s6) var(--s3);
+}
+
+@media (max-width: 900px) {
+  .shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .shop-grid {
+    gap: var(--s4) var(--s2);
+  }
+
+  /* One swipeable row instead of wrapping */
+  .filter {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter button {
+    flex: none;
+    padding: 0 var(--s2);
+  }
+}

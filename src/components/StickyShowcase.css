@@ -1,0 +1,126 @@
+.showcase {
+  position: relative;
+  background: var(--black);
+  color: #f5f5f7;
+}
+
+.showcase-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  grid-template-areas: "head stage info";
+  align-items: center;
+  gap: var(--s6);
+  padding-top: var(--nav-h);
+}
+
+.showcase-head {
+  grid-area: head;
+  align-self: start;
+  padding-top: var(--s6);
+}
+
+.showcase-head h2 {
+  font-size: var(--t-h2);
+}
+
+.showcase-steps {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  margin: var(--s3) 0 0;
+  padding: 0;
+}
+
+.showcase-steps li {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  transition: width 0.4s var(--ease), background-color 0.4s;
+}
+
+.showcase-steps li.is-active {
+  width: 28px;
+  background: var(--gold-light);
+}
+
+.showcase-stage {
+  grid-area: stage;
+  position: relative;
+  height: min(72svh, 680px);
+}
+
+/* Absolute + margin:auto centers each painting and keeps it inside the stage, whatever its shape */
+.showcase-stage img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  box-shadow: 0 40px 80px -30px rgba(255, 255, 255, 0.12);
+}
+
+.showcase-info {
+  grid-area: info;
+  align-self: end;
+  padding-bottom: var(--s6);
+}
+
+.showcase-info h3 {
+  font-size: var(--t-h3);
+}
+
+.showcase-details {
+  margin-top: var(--s1);
+  color: #a1a1a6;
+}
+
+.showcase-price {
+  margin: var(--s2) 0 var(--s3);
+  font-size: var(--t-lede);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "stage"
+      "info";
+    gap: var(--s3);
+    text-align: center;
+  }
+
+  .showcase-head {
+    padding-top: var(--s3);
+  }
+
+  .showcase-steps {
+    justify-content: center;
+  }
+
+  .showcase-stage {
+    height: 46svh;
+  }
+
+  .showcase-info {
+    align-self: start;
+    padding-bottom: 0;
+  }
+
+  .showcase-price {
+    margin: var(--s1) 0 var(--s2);
+  }
+}
