@@ -35,19 +35,23 @@ export default function Contact() {
       return;
     }
 
-    if (!site.formspreeId) {
-      setStatus("error");
-      return;
-    }
+    // Extra fields read by FormSubmit: email subject, a tidy table layout, and replies go to the visitor.
+    data.set("_subject", painting ? `Website inquiry: ${painting.title}` : `Website message: ${data.get("topic")}`);
+    data.set("_template", "table");
+    data.set("_captcha", "false");
+    data.set("_replyto", email);
+
     setStatus("sending");
     try {
-      const res = await fetch(`https://formspree.io/f/${site.formspreeId}`, {
+      const res = await fetch(`https://formsubmit.co/ajax/${site.formKey}`, {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
       });
-      setStatus(res.ok ? "sent" : "error");
-      if (res.ok) form.reset();
+      const result = await res.json().catch(() => ({}));
+      const ok = res.ok && String(result.success) === "true";
+      setStatus(ok ? "sent" : "error");
+      if (ok) form.reset();
     } catch {
       setStatus("error");
     }
@@ -102,14 +106,15 @@ export default function Contact() {
 
         {status === "error" && (
           <p className="form-error" role="alert">
-            {site.formspreeId
-              ? "The message didn’t send. Check your connection and try again, or message Olga on Instagram."
-              : "The contact form isn’t connected yet. For now, message Olga on Instagram."}{" "}
+            The message didn’t send. Check your connection and try again, or message Olga on Instagram{" "}
             <a href={site.instagram} target="_blank" rel="noreferrer">
               {site.instagramHandle}
             </a>
           </p>
         )}
+
+        {/* Spam trap: hidden from people, but bots fill it in and FormSubmit then discards the message. */}
+        <input type="text" name="_honey" className="visually-hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
         <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send message"}

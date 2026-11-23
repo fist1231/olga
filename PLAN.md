@@ -38,8 +38,10 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 
 ## Waiting on Olga
 - [ ] **Stripe:** create a Payment Link for each painting she wants to sell online, then paste each link into `stripeLink`
-- [ ] **Contact form:** create a free form at formspree.io and put its ID in a `.env` file as `VITE_FORMSPREE_ID=xxxx`
-      (and in Vercel's environment variables). Until then the form tells visitors to message her on Instagram.
+- [ ] **Contact form:** messages are emailed to olga_tislina@yahoo.com through FormSubmit (formsubmit.co).
+      The first message sent from the live site triggers an "Activate Form" email to Olga. She must click it
+      (check spam too); nothing is delivered until then. Afterwards, put the alias FormSubmit gives her in Vercel's
+      environment variables as `VITE_FORMSUBMIT_KEY` so the email address isn't visible in the site's code.
 - [ ] **Framing page:** confirm the frame and mounting options. The old text may have been Squarespace template copy.
       Once confirmed, the framing page's search description in `src/seo.js` can name the options.
 - [ ] **Look & feel:** does Olga like the font (Fraunces) and the amount of color? Both are easy to adjust.
