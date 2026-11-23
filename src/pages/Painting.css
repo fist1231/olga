@@ -154,6 +154,11 @@
   text-align: right;
 }
 
+.painting-facts .text-link {
+  min-height: 24px;
+  padding-block: 4px;
+}
+
 .more {
   margin: var(--s16) 0;
 }

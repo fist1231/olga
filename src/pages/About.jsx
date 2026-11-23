@@ -29,7 +29,7 @@ export default function About() {
       <section className="about-facts" aria-label="At a glance">
         <div className="container about-facts-grid">
           <div>
-            <h2>Where she studies</h2>
+            <h2>Where she paints and studies</h2>
             <ul>
               {schools.map((s) => (
                 <li key={s.name}>
@@ -40,8 +40,8 @@ export default function About() {
             </ul>
           </div>
           <div>
-            <h2>Where the paintings come from</h2>
-            <p className="about-places">{places.join(", ")}, and gardens closer to home.</p>
+            <h2>Places in the paintings</h2>
+            <p className="about-places">{places.join(", ")}.</p>
           </div>
           <div>
             <h2>In the studio</h2>

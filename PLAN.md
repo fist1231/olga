@@ -24,6 +24,9 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [x] About, Framing & mounting, Contact (validation, Formspree-ready), 404 page
 - [x] Checked at desktop (1440px) and phone (390px) sizes; reduced-motion setting respected
 - [x] `vercel.json` so page links work when deployed
+- [x] Accessibility pass: text contrast (all pass AA), labels, alt text, one h1 per page, 44px nav targets,
+      screen-reader text for the animated quote, keyboard-visible links for the featured showcase
+- [x] Removed copy that stated unconfirmed facts (signing, reply times, etc.)
 
 ## Waiting on Olga
 - [ ] **Stripe:** create a Payment Link for each painting she wants to sell online, then paste each link into `stripeLink`
@@ -32,9 +35,10 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [ ] **Framing page:** confirm the frame and mounting options. The old text may have been Squarespace template copy.
 - [ ] **Featured works:** confirm the 5 paintings in `featuredSlugs` (`src/data/site.js`)
 - [ ] **Prints:** confirm print prices/sizes for drawings and for sold paintings with prints (Wild Flowers, Sunflowers)
+- [ ] **Commissions:** confirm she takes commissions (the home page and contact form mention them)
 - [ ] **Domain:** choose the web address, and when to switch off Squarespace. Nothing on Squarespace has been changed.
 
 ## Next
 - [ ] Deploy a Vercel preview link to share with Olga (only after the user approves)
-- [ ] Accessibility review and design critique pass after Olga's feedback
+- [ ] Design critique pass after Olga's feedback; test with VoiceOver on a real iPhone
 - [ ] Optional: email address in the footer, a newsletter, or a "Recently sold" section

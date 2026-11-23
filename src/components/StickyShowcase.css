@@ -124,3 +124,36 @@
     margin: var(--s1) 0 var(--s2);
   }
 }
+
+/* Keyboard access: hidden until focused, like the skip link */
+.showcase-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.showcase-links:not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.showcase-links:focus-within {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s2) var(--s4);
+  padding: var(--s4) var(--gutter) var(--s6);
+}
+
+.showcase-links a {
+  color: var(--gold-light);
+}

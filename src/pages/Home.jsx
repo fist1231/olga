@@ -51,7 +51,7 @@ export default function Home() {
         <div className="container collaborate-inner">
           <img src="/images/rose.webp" alt="" width="375" height="186" loading="lazy" />
           <h2 id="collab-title">I’m always open to collaborate.</h2>
-          <p>Commissions, exhibitions, and creative projects. Tell Olga what you have in mind.</p>
+          <p>Have an idea for a commission or a creative project? Tell Olga what you have in mind.</p>
           <Link to="/contact?topic=Collaboration" className="btn btn-primary">
             Start a conversation
           </Link>

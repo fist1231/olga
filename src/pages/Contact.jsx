@@ -53,7 +53,7 @@ export default function Contact() {
     return (
       <div className="container contact-done">
         <h1>Message sent.</h1>
-        <p>Thank you. Olga will reply by email, usually within a few days.</p>
+        <p>Thank you. Olga will reply to the email address you entered.</p>
       </div>
     );
   }
@@ -62,7 +62,7 @@ export default function Contact() {
     <div className="container contact">
       <header className="page-head">
         <h1>Let’s talk.</h1>
-        <p>Questions about a painting, a commission, or a collaboration. Olga reads every message.</p>
+        <p>Questions about a painting, a commission, or a collaboration? Send Olga a message.</p>
       </header>
 
       <form className="contact-form" onSubmit={onSubmit} noValidate>

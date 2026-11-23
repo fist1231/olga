@@ -65,10 +65,15 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--s4);
+  gap: var(--s2);
 }
 
+/* 44px-tall hit areas without changing how the links look */
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--s1);
   font-size: var(--t-small);
   color: rgba(29, 29, 31, 0.8);
   text-decoration: none;
@@ -84,8 +89,9 @@
   font-weight: 600;
 }
 
-.nav-ig {
-  display: flex;
+.nav-links .nav-ig {
+  justify-content: center;
+  min-width: 44px;
 }
 
 .nav-toggle {

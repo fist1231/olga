@@ -77,8 +77,9 @@ export default function StickyShowcase({ works }) {
         </div>
       </div>
 
-      {/* Plain list so keyboard and screen-reader users can reach every featured work. */}
-      <ul className="visually-hidden">
+      {/* Plain list so keyboard and screen-reader users can reach every featured work.
+          Hidden until a link inside it gets keyboard focus, then it appears. */}
+      <ul className="showcase-links" aria-label="Featured works">
         {works.map((w) => (
           <li key={w.slug}>
             <Link to={`/shop/${w.slug}`}>{w.title}</Link>

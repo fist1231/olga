@@ -35,7 +35,7 @@ export default function Framing() {
     <div className="container">
       <header className="page-head">
         <h1>Framing &amp; mounting</h1>
-        <p>Originals and prints can be framed to order. Choose a frame and a mounting style when you inquire.</p>
+        <p>All prints are available for custom framing and mounting. Mention the frame and mounting style you’d like when you inquire.</p>
       </header>
 
       <section aria-labelledby="frames-title" className="framing-section">
@@ -68,7 +68,7 @@ export default function Framing() {
 
       <section className="framing-cta">
         <h2>Not sure which to choose?</h2>
-        <p>Tell Olga which painting you love and where it will hang, and she’ll suggest a frame.</p>
+        <p>Tell Olga which painting you love and where it will hang, and ask about the options.</p>
         <Link to="/contact?topic=Framing" className="btn btn-primary">
           Ask about framing
         </Link>

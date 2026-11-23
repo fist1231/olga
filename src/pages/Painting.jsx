@@ -31,7 +31,7 @@ function PurchaseAction({ p }) {
       <Link to={inquire} className="btn btn-primary">
         {p.status === "print" ? "Order a print" : "Inquire to buy"}
       </Link>
-      <p className="buy-note">Olga will reply by email with shipping and payment details.</p>
+      <p className="buy-note">Send Olga a short message to arrange the purchase.</p>
     </>
   );
 }

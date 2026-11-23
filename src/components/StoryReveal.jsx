@@ -26,7 +26,8 @@ export default function StoryReveal() {
           {reduce ? (
             <p>{quote}</p>
           ) : (
-            <p aria-label={quote}>
+            <p>
+              <span className="visually-hidden">{quote}</span>
               <span aria-hidden="true">
                 {words.map((w, i) => (
                   <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>

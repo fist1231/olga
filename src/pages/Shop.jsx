@@ -21,7 +21,7 @@ export default function Shop() {
     <div className="container">
       <header className="page-head">
         <h1>Shop</h1>
-        <p>Original paintings and limited prints, signed by the artist.</p>
+        <p>Original paintings and limited prints by Olga Tislina.</p>
       </header>
 
       <LayoutGroup>

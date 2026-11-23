@@ -9,8 +9,9 @@
   --black: #000000;
   --hairline: rgba(0, 0, 0, 0.12);
 
-  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue",
-    Inter, system-ui, sans-serif;
+  /* System fonts: SF Pro on Apple devices, Segoe UI on Windows, Roboto on Android */
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI",
+    Roboto, system-ui, sans-serif;
 
   /* Type scale */
   --t-hero: clamp(3rem, 7.4vw, 6rem);
