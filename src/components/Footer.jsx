@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <img src="/images/logo.webp" alt={`${site.brand} logo`} width="88" height="67" />
+          <img src="/images/logo.png" alt={`${site.brand} logo`} width="88" height="67" />
           <p>
             Original paintings by {site.artist}.
             <br />

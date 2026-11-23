@@ -20,7 +20,6 @@
 
 .footer-brand img {
   width: 88px;
-  mix-blend-mode: multiply; /* blends the logo's white background into the gray footer */
 }
 
 .footer-links {

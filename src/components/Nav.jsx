@@ -58,7 +58,7 @@ export default function Nav() {
       <header className={`nav ${open ? "is-open" : ""} ${dark && !open ? "is-dark" : ""}`}>
         <div className="nav-inner">
           <Link to="/" className="nav-brand" aria-label={`${site.artist}, home`} onClick={() => setOpen(false)}>
-            <img src="/images/logo.webp" alt="" width="34" height="26" />
+            <img src="/images/logo-nav.png" alt="" width="40" height="30" />
             <span>{site.artist}</span>
           </Link>
 
