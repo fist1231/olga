@@ -1,19 +1,29 @@
 .story {
   padding: var(--s16) 0;
-  background: var(--mist);
+  /* A still wash of her palette over white, like a primed canvas */
+  background:
+    radial-gradient(60% 80% at 8% 10%, rgba(169, 139, 212, 0.28), transparent 70%),
+    radial-gradient(50% 70% at 92% 30%, rgba(47, 138, 150, 0.2), transparent 70%),
+    radial-gradient(60% 80% at 60% 110%, rgba(232, 106, 154, 0.22), transparent 70%),
+    #fbfafc;
 }
 
 .story-quote {
   margin: 0;
-  max-width: 20em;
+  max-width: 19em;
+  font-family: var(--font-display);
+  font-style: italic;
   font-size: var(--t-display);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-weight: 450;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
 }
 
 .story-quote footer {
   margin-top: var(--s6);
+  font-family: var(--font);
+  font-style: normal;
   font-size: var(--t-lede);
   letter-spacing: -0.011em;
 }
