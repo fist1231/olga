@@ -11,7 +11,7 @@ function statusLabel(p) {
 export default function PaintingCard({ painting }) {
   const img = painting.images[0];
   return (
-    <Link to={`/shop/${painting.slug}`} className="card">
+    <Link to={`/shop/${painting.slug}`} className="card" style={{ "--art": painting.color }}>
       <div className="card-frame">
         <div className="card-mat">
           <img src={img.thumb} alt="" loading="lazy" width={img.width} height={img.height} />

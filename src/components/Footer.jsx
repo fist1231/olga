@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { site } from "../data/site.js";
+import { paintings, site } from "../data/site.js";
 import "./Footer.css";
 
 const YEAR = new Date().getFullYear();
@@ -7,6 +7,14 @@ const YEAR = new Date().getFullYear();
 export default function Footer() {
   return (
     <footer className="footer">
+      {/* Her whole collection as a strip of color, one stripe per painting */}
+      <div className="palette-strip" aria-hidden="true">
+        {paintings
+          .filter((p) => p.category !== "Drawings")
+          .map((p) => (
+            <span key={p.slug} style={{ background: p.color }} />
+          ))}
+      </div>
       <div className="container footer-inner">
         <div className="footer-brand">
           <img src="/images/logo.png" alt={`${site.brand} logo`} width="88" height="67" />

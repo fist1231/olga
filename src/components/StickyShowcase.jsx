@@ -28,6 +28,12 @@ export default function StickyShowcase({ works }) {
       aria-labelledby="showcase-title"
     >
       <div className="showcase-sticky">
+        {/* One glow per painting in its own color; only the current one is visible (opacity crossfade). */}
+        <div className="showcase-washes" aria-hidden="true">
+          {works.map((w, i) => (
+            <span key={w.slug} className={i === index ? "is-active" : ""} style={{ "--art": w.color }} />
+          ))}
+        </div>
         <div className="container showcase-grid">
           <div className="showcase-head">
             <h2 id="showcase-title">Featured works</h2>

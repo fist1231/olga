@@ -13,7 +13,30 @@
   overflow: hidden;
 }
 
+.showcase-washes,
+.showcase-washes span {
+  position: absolute;
+  inset: 0;
+}
+
+.showcase-washes span {
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+  background: radial-gradient(
+    80% 90% at 50% 50%,
+    color-mix(in oklab, var(--art) 70%, black),
+    color-mix(in oklab, var(--art) 38%, black) 45%,
+    color-mix(in oklab, var(--art) 12%, black) 80%,
+    #000 100%
+  );
+}
+
+.showcase-washes span.is-active {
+  opacity: 1;
+}
+
 .showcase-grid {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1.6fr 1fr;
   grid-template-areas: "head stage info";
@@ -50,7 +73,7 @@
 
 .showcase-steps li.is-active {
   width: 28px;
-  background: var(--gold-light);
+  background: var(--accent-on-dark);
 }
 
 .showcase-stage {
@@ -68,7 +91,7 @@
   max-width: 100%;
   width: auto;
   height: auto;
-  box-shadow: 0 40px 80px -30px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.7);
 }
 
 .showcase-info {
@@ -83,7 +106,7 @@
 
 .showcase-details {
   margin-top: var(--s1);
-  color: #a1a1a6;
+  color: #d2d2d7;
 }
 
 .showcase-price {
@@ -155,5 +178,5 @@
 }
 
 .showcase-links a {
-  color: var(--gold-light);
+  color: var(--accent-on-dark);
 }

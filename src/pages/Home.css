@@ -25,7 +25,7 @@
   flex-direction: column;
   min-height: 520px;
   padding: var(--s6) var(--s6) 0;
-  background: var(--mist);
+  background: color-mix(in oklab, var(--art) 16%, white);
   border-radius: var(--radius-lg);
   text-decoration: none;
   overflow: hidden;
@@ -38,7 +38,7 @@
 .collection-text p {
   margin-top: var(--s1);
   max-width: 24em;
-  color: var(--graphite);
+  color: #48484d; /* darker than graphite so it stays readable on the colored tile */
 }
 
 .collection-count {
@@ -46,7 +46,7 @@
   margin-top: var(--s2);
   font-size: var(--t-small);
   font-weight: 600;
-  color: var(--gold);
+  color: color-mix(in oklab, var(--art) 55%, black);
 }
 
 .collection-art {
@@ -76,18 +76,17 @@
 .collaborate {
   padding: var(--s12) 0 var(--s16);
   text-align: center;
+  color: #ffffff;
+  background:
+    radial-gradient(70% 90% at 15% 0%, rgba(240, 183, 63, 0.35), transparent 60%),
+    radial-gradient(60% 80% at 90% 100%, rgba(47, 138, 150, 0.45), transparent 65%),
+    linear-gradient(120deg, #4a1f6e, #8e2459 55%, #b13a3a);
 }
 
 .collaborate-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.collaborate img {
-  width: 200px;
-  margin-bottom: var(--s4);
-  opacity: 0.85;
 }
 
 .collaborate h2 {
@@ -99,7 +98,7 @@
   margin: var(--s3) 0 var(--s4);
   max-width: 30em;
   font-size: var(--t-lede);
-  color: var(--graphite);
+  color: #ffffff;
 }
 
 @media (max-width: 760px) {

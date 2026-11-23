@@ -19,10 +19,10 @@ export const schools = [
 ];
 
 export const categories = [
-  { name: "Paintings", blurb: "Oil paintings of flowers, still life, and places she has traveled." },
-  { name: "Abstract", blurb: "Acrylic explorations in color and texture." },
-  { name: "Watercolor", blurb: "Snowy villages, quiet seasides, and city streets." },
-  { name: "Drawings", blurb: "Charcoal sketches, available as limited prints." },
+  { name: "Paintings", dot: "#c23a6e", blurb: "Oil paintings of flowers, still life, and places she has traveled." },
+  { name: "Abstract", dot: "#8a73c6", blurb: "Acrylic explorations in color and texture." },
+  { name: "Watercolor", dot: "#4f7fc4", blurb: "Snowy villages, quiet seasides, and city streets." },
+  { name: "Drawings", dot: "#6e6e73", blurb: "Charcoal sketches, available as limited prints." },
 ];
 
 // The paintings shown in the big scrolling showcase on the home page.

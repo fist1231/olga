@@ -54,7 +54,7 @@ export default function Painting() {
   const more = paintings.filter((x) => x.category === p.category && x.slug !== p.slug).slice(0, 3);
 
   return (
-    <div className="container painting">
+    <div className="container painting" style={{ "--art": p.color }}>
       <nav className="crumbs" aria-label="Breadcrumb">
         <Link to="/shop">Shop</Link>
         <span aria-hidden="true">/</span>

@@ -2,7 +2,17 @@
   background: var(--mist);
   color: var(--graphite);
   font-size: var(--t-small);
-  padding: var(--s8) 0 var(--s4);
+  padding: 0 0 var(--s4);
+}
+
+.palette-strip {
+  display: flex;
+  height: 10px;
+  margin-bottom: var(--s8);
+}
+
+.palette-strip span {
+  flex: 1;
 }
 
 .footer-inner {

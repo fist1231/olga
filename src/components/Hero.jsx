@@ -16,6 +16,12 @@ export default function Hero() {
 
   return (
     <section className="hero" ref={ref}>
+      {/* Soft washes of color from Olga's palette, slowly drifting like wet paint */}
+      <div className="hero-wash" aria-hidden="true">
+        <span className="wash wash-rose" />
+        <span className="wash wash-cobalt" />
+        <span className="wash wash-saffron" />
+      </div>
       <div className="container hero-grid">
         <motion.div className="hero-copy" style={reduce ? undefined : { opacity: textOpacity }}>
           <motion.p
@@ -30,6 +36,7 @@ export default function Hero() {
             {lines.map((line, i) => (
               <span className="hero-line" key={line} aria-hidden="true">
                 <motion.span
+                  className={`hero-ink hero-ink-${i}`}
                   initial={{ y: "105%" }}
                   animate={{ y: 0 }}
                   transition={{ delay: 0.15 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}

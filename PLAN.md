@@ -27,12 +27,17 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [x] Accessibility pass: text contrast (all pass AA), labels, alt text, one h1 per page, 44px nav targets,
       screen-reader text for the animated quote, keyboard-visible links for the featured showcase
 - [x] Removed copy that stated unconfirmed facts (signing, reply times, etc.)
+- [x] Clean transparent PNG logo (+ favicon, Apple touch icon)
+- [x] Artsier look: Fraunces headline font; color system drawn from her paintings (each painting has its own color
+      for card tints, page tints, and the featured-gallery glow); colored hero headline and paint washes;
+      bold collaborate section; palette strip in the footer. Contrast re-checked (all AA).
 
 ## Waiting on Olga
 - [ ] **Stripe:** create a Payment Link for each painting she wants to sell online, then paste each link into `stripeLink`
 - [ ] **Contact form:** create a free form at formspree.io and put its ID in a `.env` file as `VITE_FORMSPREE_ID=xxxx`
       (and in Vercel's environment variables). Until then the form tells visitors to message her on Instagram.
 - [ ] **Framing page:** confirm the frame and mounting options. The old text may have been Squarespace template copy.
+- [ ] **Look & feel:** does Olga like the font (Fraunces) and the amount of color? Both are easy to adjust.
 - [ ] **Featured works:** confirm the 5 paintings in `featuredSlugs` (`src/data/site.js`)
 - [ ] **Prints:** confirm print prices/sizes for drawings and for sold paintings with prints (Wild Flowers, Sunflowers)
 - [ ] **Commissions:** confirm she takes commissions (the home page and contact form mention them)

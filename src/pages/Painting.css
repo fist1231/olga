@@ -34,7 +34,7 @@
   aspect-ratio: 1 / 1;
   max-height: 78svh;
   padding: 0;
-  background: var(--mist);
+  background: color-mix(in oklab, var(--art) 16%, white);
   border: 0;
   border-radius: var(--radius-lg);
   cursor: zoom-in;
@@ -68,7 +68,7 @@
   padding: 8px;
   border: 2px solid transparent;
   border-radius: 12px;
-  background: var(--mist);
+  background: color-mix(in oklab, var(--art) 12%, white);
   cursor: pointer;
 }
 

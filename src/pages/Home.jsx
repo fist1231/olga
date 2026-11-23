@@ -23,7 +23,12 @@ export default function Home() {
               const cover = coverFor(c.name);
               const count = paintings.filter((p) => p.category === c.name).length;
               return (
-                <Link key={c.name} to={`/shop?category=${c.name}`} className="collection-tile">
+                <Link
+                  key={c.name}
+                  to={`/shop?category=${c.name}`}
+                  className="collection-tile"
+                  style={{ "--art": c.dot }}
+                >
                   <div className="collection-text">
                     <h3>{c.name}</h3>
                     <p>{c.blurb}</p>
@@ -47,12 +52,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="collaborate" aria-labelledby="collab-title">
+      <section className="collaborate on-dark" data-nav-dark aria-labelledby="collab-title">
         <div className="container collaborate-inner">
-          <img src="/images/rose.webp" alt="" width="375" height="186" loading="lazy" />
           <h2 id="collab-title">I’m always open to collaborate.</h2>
           <p>Have an idea for a commission or a creative project? Tell Olga what you have in mind.</p>
-          <Link to="/contact?topic=Collaboration" className="btn btn-primary">
+          <Link to="/contact?topic=Collaboration" className="btn btn-light">
             Start a conversation
           </Link>
         </div>

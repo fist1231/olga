@@ -5,6 +5,7 @@ import { categories, paintings } from "../data/site.js";
 import "./Shop.css";
 
 const filters = ["All", ...categories.map((c) => c.name)];
+const dots = Object.fromEntries(categories.map((c) => [c.name, c.dot]));
 
 export default function Shop() {
   const [params, setParams] = useSearchParams();
@@ -41,7 +42,10 @@ export default function Shop() {
                   transition={{ type: "spring", stiffness: 420, damping: 36 }}
                 />
               )}
-              <span className="filter-label">{name}</span>
+              <span className="filter-label">
+                {dots[name] && <span className="filter-dot" style={{ background: dots[name] }} aria-hidden="true" />}
+                {name}
+              </span>
             </button>
           ))}
         </div>

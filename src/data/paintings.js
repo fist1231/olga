@@ -1,5 +1,6 @@
 // Olga's artwork, migrated from the Squarespace shop.
 // To sell a painting online, paste its Stripe Payment Link into `stripeLink`.
+// color: the painting's signature color, used for tints around it (picked from the image, some by hand).
 // status: "available" (original for sale), "sold", or "print" (limited print).
 
 export const paintings = [
@@ -19,7 +20,8 @@ export const paintings = [
         "height": 1255
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8e9bd6"
   },
   {
     "slug": "favorite-cafe",
@@ -37,7 +39,8 @@ export const paintings = [
         "height": 1864
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#b8386a"
   },
   {
     "slug": "frozen-waterfall",
@@ -55,7 +58,8 @@ export const paintings = [
         "height": 1527
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#476490"
   },
   {
     "slug": "calm",
@@ -73,7 +77,8 @@ export const paintings = [
         "height": 1058
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a8f98"
   },
   {
     "slug": "it-snowed",
@@ -91,7 +96,8 @@ export const paintings = [
         "height": 1099
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#ba9e6d"
   },
   {
     "slug": "riga",
@@ -115,7 +121,8 @@ export const paintings = [
         "height": 2000
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#7e98ca"
   },
   {
     "slug": "a-tree-by-the-lake",
@@ -133,7 +140,8 @@ export const paintings = [
         "height": 2179
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#a47351"
   },
   {
     "slug": "mountain-village-in-winter",
@@ -151,7 +159,8 @@ export const paintings = [
         "height": 1109
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#a97f48"
   },
   {
     "slug": "garden",
@@ -169,7 +178,8 @@ export const paintings = [
         "height": 1959
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d6508a"
   },
   {
     "slug": "favorite",
@@ -187,7 +197,8 @@ export const paintings = [
         "height": 1911
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#a98bd4"
   },
   {
     "slug": "seeking-1-1",
@@ -205,7 +216,8 @@ export const paintings = [
         "height": 2150
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#c8ab7f"
   },
   {
     "slug": "bubbles",
@@ -235,7 +247,8 @@ export const paintings = [
         "height": 1124
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#7fb0a0"
   },
   {
     "slug": "space-framed",
@@ -253,7 +266,8 @@ export const paintings = [
         "height": 1813
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#3e548c"
   },
   {
     "slug": "space",
@@ -277,7 +291,8 @@ export const paintings = [
         "height": 2000
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#3c5184"
   },
   {
     "slug": "exploration",
@@ -295,7 +310,8 @@ export const paintings = [
         "height": 792
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a73c6"
   },
   {
     "slug": "the-peak-framed",
@@ -313,7 +329,8 @@ export const paintings = [
         "height": 1097
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d7bb9a"
   },
   {
     "slug": "the-peak",
@@ -331,7 +348,8 @@ export const paintings = [
         "height": 1097
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d7bb9a"
   },
   {
     "slug": "connection",
@@ -349,7 +367,8 @@ export const paintings = [
         "height": 1973
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#a4a146"
   },
   {
     "slug": "love",
@@ -367,7 +386,8 @@ export const paintings = [
         "height": 1258
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#a5a547"
   },
   {
     "slug": "winter",
@@ -385,7 +405,8 @@ export const paintings = [
         "height": 1123
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#b78662"
   },
   {
     "slug": "abbaye-de-lerins-monastery",
@@ -403,7 +424,8 @@ export const paintings = [
         "height": 2024
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#c49547"
   },
   {
     "slug": "white-roses",
@@ -421,7 +443,8 @@ export const paintings = [
         "height": 1153
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#34539c"
   },
   {
     "slug": "rose-garden-crete",
@@ -439,7 +462,8 @@ export const paintings = [
         "height": 1240
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#c23a6e"
   },
   {
     "slug": "charming-space",
@@ -457,7 +481,8 @@ export const paintings = [
         "height": 1978
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#c5a764"
   },
   {
     "slug": "yulia",
@@ -475,7 +500,8 @@ export const paintings = [
         "height": 2084
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#204374"
   },
   {
     "slug": "terracina",
@@ -493,7 +519,8 @@ export const paintings = [
         "height": 1050
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#9c933a"
   },
   {
     "slug": "crete",
@@ -511,7 +538,8 @@ export const paintings = [
         "height": 1185
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d9a061"
   },
   {
     "slug": "rooster",
@@ -529,7 +557,8 @@ export const paintings = [
         "height": 1480
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d55a1b"
   },
   {
     "slug": "a-cup-of-tea-in-bolivia",
@@ -547,7 +576,8 @@ export const paintings = [
         "height": 1082
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#ccad64"
   },
   {
     "slug": "fishing-boats",
@@ -565,7 +595,8 @@ export const paintings = [
         "height": 1546
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#dca22f"
   },
   {
     "slug": "green-boat-in-croatia",
@@ -583,7 +614,8 @@ export const paintings = [
         "height": 1165
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#bc9951"
   },
   {
     "slug": "orange-slices-on-a-blue-plate-1",
@@ -601,7 +633,8 @@ export const paintings = [
         "height": 1177
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d89741"
   },
   {
     "slug": "pink-poppies",
@@ -619,7 +652,8 @@ export const paintings = [
         "height": 1094
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d9607e"
   },
   {
     "slug": "white-roses-with-graps",
@@ -637,7 +671,8 @@ export const paintings = [
         "height": 1426
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#b0723c"
   },
   {
     "slug": "teddy-bear",
@@ -655,7 +690,8 @@ export const paintings = [
         "height": 1114
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#2f8a96"
   },
   {
     "slug": "wild-flowers",
@@ -673,7 +709,8 @@ export const paintings = [
         "height": 1125
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#60b6ca"
   },
   {
     "slug": "happiness",
@@ -691,7 +728,8 @@ export const paintings = [
         "height": 1153
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#ea7a34"
   },
   {
     "slug": "amaryllis-and-watermelon",
@@ -709,7 +747,8 @@ export const paintings = [
         "height": 1252
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#2c7a6e"
   },
   {
     "slug": "sunflowers",
@@ -727,7 +766,8 @@ export const paintings = [
         "height": 1558
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#dd9d26"
   },
   {
     "slug": "yellow-roses-in-a-glass-vase",
@@ -745,7 +785,8 @@ export const paintings = [
         "height": 1085
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#9b8e24"
   },
   {
     "slug": "pink-rose-miniature",
@@ -763,7 +804,8 @@ export const paintings = [
         "height": 740
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#cb6156"
   },
   {
     "slug": "yellow-rose-miniature",
@@ -781,7 +823,8 @@ export const paintings = [
         "height": 988
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d6912d"
   },
   {
     "slug": "pink-rose-in-a-glass-container",
@@ -799,7 +842,8 @@ export const paintings = [
         "height": 1678
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#83c1ce"
   },
   {
     "slug": "garden-roses",
@@ -817,7 +861,8 @@ export const paintings = [
         "height": 1540
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#c57080"
   },
   {
     "slug": "fantasy-oil-painting",
@@ -835,7 +880,8 @@ export const paintings = [
         "height": 1125
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#d76735"
   },
   {
     "slug": "sketch-1",
@@ -853,7 +899,8 @@ export const paintings = [
         "height": 1574
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a8f98"
   },
   {
     "slug": "aussie-2",
@@ -871,7 +918,8 @@ export const paintings = [
         "height": 1014
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a8f98"
   },
   {
     "slug": "a-child-and-a-sea-sketch-crete-limited-print",
@@ -889,7 +937,8 @@ export const paintings = [
         "height": 1025
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a8f98"
   },
   {
     "slug": "straw-umbrella-sketch-crete-limited-print",
@@ -907,7 +956,8 @@ export const paintings = [
         "height": 1680
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a8f98"
   },
   {
     "slug": "cat-nap",
@@ -925,6 +975,7 @@ export const paintings = [
         "height": 1576
       }
     ],
-    "stripeLink": ""
+    "stripeLink": "",
+    "color": "#8a8f98"
   }
 ];

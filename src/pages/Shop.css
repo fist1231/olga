@@ -34,6 +34,15 @@
 
 .filter-label {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
 }
 
 .shop-count {

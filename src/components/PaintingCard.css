@@ -6,9 +6,16 @@
 .card-frame {
   position: relative;
   aspect-ratio: 1 / 1;
-  background: var(--mist);
+  /* A light wash of the painting's own color, so the grid reads like a wall of color swatches */
+  background: color-mix(in oklab, var(--art, #888) 20%, white);
   border-radius: var(--radius-md);
   overflow: hidden;
+  transition: background-color 0.5s var(--ease);
+}
+
+.card:hover .card-frame,
+.card:focus-visible .card-frame {
+  background: color-mix(in oklab, var(--art, #888) 30%, white);
 }
 
 /* Absolutely positioned so it has a definite size, letting tall and wide paintings both fit */
@@ -50,9 +57,10 @@
 }
 
 .card-text h3 {
-  font-size: 1.125rem;
-  letter-spacing: -0.015em;
-  line-height: 1.25;
+  font-size: 1.3125rem;
+  font-weight: 540;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
 }
 
 .card-details {

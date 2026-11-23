@@ -1,7 +1,72 @@
 .hero {
+  position: relative;
   padding-top: calc(var(--nav-h) + var(--s8));
   padding-bottom: var(--s12);
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* Paint washes: big soft gradients that drift slowly. Only transform is animated (cheap on phones). */
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.wash {
+  position: absolute;
+  width: 46vmax;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0.32;
+  will-change: transform;
+}
+
+.wash-rose {
+  top: -18vmax;
+  right: -8vmax;
+  background: radial-gradient(closest-side, #e86a9a, rgba(232, 106, 154, 0));
+  animation: drift-a 22s ease-in-out infinite alternate;
+}
+
+.wash-cobalt {
+  bottom: -22vmax;
+  right: 18vw;
+  background: radial-gradient(closest-side, #6f8be0, rgba(111, 139, 224, 0));
+  animation: drift-b 26s ease-in-out infinite alternate;
+}
+
+.wash-saffron {
+  top: 10vh;
+  left: -20vmax;
+  background: radial-gradient(closest-side, #f6c453, rgba(246, 196, 83, 0));
+  opacity: 0.38;
+  animation: drift-c 30s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  to {
+    transform: translate(-6vw, 8vh) scale(1.12);
+  }
+}
+
+@keyframes drift-b {
+  to {
+    transform: translate(8vw, -6vh) scale(0.92);
+  }
+}
+
+@keyframes drift-c {
+  to {
+    transform: translate(5vw, 10vh) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wash {
+    animation: none;
+  }
 }
 
 .hero-grid {
@@ -13,16 +78,39 @@
 }
 
 .hero-name {
+  font-family: var(--font-display);
+  font-style: italic;
   font-size: var(--t-lede);
-  font-weight: 600;
-  color: var(--gold);
+  font-weight: 500;
+  color: var(--accent);
   margin-bottom: var(--s2);
 }
 
 .hero h1 {
   font-size: var(--t-hero);
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  letter-spacing: -0.025em;
   line-height: 1;
+}
+
+/* Each line is painted in its own blend of Olga's colors. All stops are dark enough to read on white. */
+.hero-ink {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  padding-right: 0.06em; /* keeps italic-ish overhangs from being clipped */
+}
+
+.hero-ink-0 {
+  background-image: linear-gradient(95deg, var(--cobalt), var(--teal));
+}
+
+.hero-ink-1 {
+  background-image: linear-gradient(95deg, var(--rose), var(--violet) 70%);
+}
+
+.hero-ink-2 {
+  background-image: linear-gradient(95deg, var(--vermilion), var(--rose));
 }
 
 .hero-line {
