@@ -51,8 +51,7 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 - [ ] **Domain:** choose the web address, and when to switch off Squarespace. Nothing on Squarespace has been changed.
 
 ## Publishing on Hostinger
-1. In `vite.config.js`, replace the placeholder `SITE_URL` with the real address (e.g. `https://olgatislina.com`).
-   The build prints a warning while it's still the placeholder.
+1. The address is set in `vite.config.js` (`SITE_URL = 'https://olgas-art.com'`). Change it there if the domain changes.
 2. Run `npm run package`. It builds the site and creates `olga-site.zip`.
 3. In Hostinger hPanel → Websites → Manage → File Manager, open `public_html`, upload `olga-site.zip`,
    right-click it → Extract (into `public_html`), then delete the zip. Remove Hostinger's default `default.php`
