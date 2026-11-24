@@ -1,35 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { bySlug, site } from "../data/site.js";
 import { useHydrated } from "../useHydrated.js";
 import "./Contact.css";
 
 const topics = ["Buying a painting", "Commission", "Collaboration", "Framing", "Something else"];
-// Some email apps cut off very long mailto: links (~2,000 characters), so keep messages under this.
-const MAX_MESSAGE = 1500;
-
-// The email the visitor's own email app opens with: addressed to Olga, ready to send.
-function buildEmail({ name, topic, message, painting }) {
-  const subject = painting ? `Website inquiry: ${painting.title}` : `Website message: ${topic}`;
-  const details = [`Name: ${name}`, `Topic: ${topic}`];
-  if (painting) details.push(`Painting: ${painting.title} (${painting.details})`);
-  const body = `${message}\n\n—\n${details.join("\n")}`;
-  const q = (pairs) => pairs.map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join("&");
-  return {
-    mailto: `mailto:${site.contactEmail}?${q([["subject", subject], ["body", body]])}`,
-    // For people who use Gmail in the browser instead of an email app.
-    gmail: `https://mail.google.com/mail/?${q([["view", "cm"], ["to", site.contactEmail], ["su", subject], ["body", body]])}`,
-  };
-}
-
-// Opening a mailto: link through a real link click works the same way in every browser.
-function openEmailApp(href) {
-  const a = document.createElement("a");
-  a.href = href;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
 
 export default function Contact() {
   // The pre-built page has no ?painting= or ?topic=; those are applied right after the page loads.
@@ -41,84 +16,56 @@ export default function Contact() {
     ? "Buying a painting"
     : topics.find((t) => t.toLowerCase().startsWith((params.get("topic") || "").toLowerCase())) || topics[0];
 
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
   const [errors, setErrors] = useState({});
-  const [draft, setDraft] = useState(null); // what the visitor wrote, kept for "Edit message"
-  const [email, setEmail] = useState(null); // set once the email app has been opened
-  const [copied, setCopied] = useState(false);
-  const doneHeading = useRef(null);
 
-  // Show the "finish in your email app" screen from its top, and move keyboard/screen-reader focus to it.
-  useEffect(() => {
-    if (!email) return;
-    window.scrollTo({ top: 0, behavior: "instant" });
-    doneHeading.current?.focus();
-  }, [email]);
-
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    const values = {
-      name: data.get("name").trim(),
-      topic: data.get("topic"),
-      message: data.get("message").trim(),
-    };
     const next = {};
-    if (!values.name) next.name = "Enter your name.";
-    if (!values.message) next.message = "Write a short message.";
+    if (!data.get("name").trim()) next.name = "Enter your name.";
+    const email = data.get("email").trim();
+    if (!email) next.email = "Enter your email so Olga can reply.";
+    else if (!/^\S+@\S+\.\S+$/.test(email)) next.email = "Enter an email address like name@example.com.";
+    if (!data.get("message").trim()) next.message = "Write a short message.";
     setErrors(next);
     if (Object.keys(next).length) {
       form.querySelector(`[name="${Object.keys(next)[0]}"]`)?.focus();
       return;
     }
 
-    const built = buildEmail({ ...values, painting });
-    setDraft(values);
-    setEmail(built);
-    setCopied(false);
-    openEmailApp(built.mailto);
-  }
+    // Extra fields read by FormSubmit: email subject, a tidy table layout, and replies go to the visitor.
+    data.set("_subject", painting ? `Website inquiry: ${painting.title}` : `Website message: ${data.get("topic")}`);
+    data.set("_template", "table");
+    data.set("_captcha", "false");
+    data.set("_replyto", email);
 
-  async function copyAddress() {
+    setStatus("sending");
     try {
-      await navigator.clipboard.writeText(site.contactEmail);
-      setCopied(true);
-    } catch {
-      setCopied(false);
+      const res = await fetch(`https://formsubmit.co/ajax/${site.formKey}`, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      const result = await res.json().catch(() => ({}));
+      const ok = res.ok && String(result.success) === "true";
+      // FormSubmit explains failures here (e.g. "This form needs Activation"): visible in the browser's console.
+      if (!ok) console.warn("Contact form not sent:", result.message || res.status);
+      setStatus(ok ? "sent" : "error");
+      if (ok) form.reset();
+    } catch (err) {
+      // Blocked before reaching FormSubmit (offline, ad blocker, VPN, or a security check).
+      console.warn("Contact form not sent: couldn't reach formsubmit.co.", err);
+      setStatus("error");
     }
   }
 
-  if (email) {
+  if (status === "sent") {
     return (
       <div className="container contact-done">
-        <h1 ref={doneHeading} tabIndex={-1}>
-          Finish in your email app.
-        </h1>
-        <p>Your message to Olga is ready. Press Send in your email app.</p>
-        <div className="contact-fallback">
-          <p>
-            Didn’t open?{" "}
-            <a href={email.gmail} target="_blank" rel="noreferrer" className="text-link">
-              Use Gmail instead
-            </a>
-            , or email Olga at{" "}
-            <a href={`mailto:${site.contactEmail}`} className="text-link">
-              {site.contactEmail}
-            </a>
-            .
-          </p>
-          <div className="contact-fallback-actions">
-            <button type="button" className="btn btn-light" onClick={copyAddress}>
-              {copied ? "Address copied" : "Copy address"}
-            </button>
-            <button type="button" className="btn btn-light" onClick={() => setEmail(null)}>
-              Edit message
-            </button>
-          </div>
-          <p className="visually-hidden" aria-live="polite">
-            {copied ? "Email address copied." : ""}
-          </p>
-        </div>
+        <h1>Message sent.</h1>
+        <p>Thank you. Olga will reply to the email address you entered.</p>
       </div>
     );
   }
@@ -127,19 +74,19 @@ export default function Contact() {
     <div className="container contact">
       <header className="page-head">
         <h1>Let’s talk.</h1>
-        <p>
-          Questions about a painting, a commission, or a collaboration? Write Olga a message: it opens in your email
-          app, ready to send.
-        </p>
+        <p>Questions about a painting, a commission, or a collaboration? Send Olga a message.</p>
       </header>
 
       {/* key: redraw the form once after load so a ?painting= link fills in the fields */}
       <form className="contact-form" onSubmit={onSubmit} noValidate key={hydrated ? "ready" : "first"}>
-        <Field label="Name" name="name" autoComplete="name" error={errors.name} defaultValue={draft?.name} />
+        <div className="field-row">
+          <Field label="Name" name="name" autoComplete="name" error={errors.name} />
+          <Field label="Email" name="email" type="email" autoComplete="email" error={errors.email} />
+        </div>
 
         <label className="field">
           <span>Topic</span>
-          <select name="topic" defaultValue={draft?.topic || initialTopic}>
+          <select name="topic" defaultValue={initialTopic}>
             {topics.map((t) => (
               <option key={t}>{t}</option>
             ))}
@@ -157,13 +104,24 @@ export default function Contact() {
           label="Message"
           name="message"
           textarea
-          maxLength={MAX_MESSAGE}
           error={errors.message}
-          defaultValue={draft?.message ?? (painting ? `Hi Olga, I’m interested in “${painting.title}”.` : "")}
+          defaultValue={painting ? `Hi Olga, I’m interested in “${painting.title}”.` : ""}
         />
 
-        <button className="btn btn-primary" type="submit">
-          Write email
+        {status === "error" && (
+          <p className="form-error" role="alert">
+            The message didn’t send. Check your connection and try again, or message Olga on Instagram{" "}
+            <a href={site.instagram} target="_blank" rel="noreferrer">
+              {site.instagramHandle}
+            </a>
+          </p>
+        )}
+
+        {/* Spam trap: hidden from people, but bots fill it in and FormSubmit then discards the message. */}
+        <input type="text" name="_honey" className="visually-hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+        <button className="btn btn-primary" type="submit" disabled={status === "sending"}>
+          {status === "sending" ? "Sending…" : "Send message"}
         </button>
       </form>
 

@@ -21,7 +21,7 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
       sticky "Featured works" showcase, collection tiles, collaborate banner
 - [x] Shop: category filter with sliding pill + animated re-flow, sold badges, link-shareable filters (`/shop?category=Watercolor`)
 - [x] Painting page: large view, extra photos, full-screen zoom, Buy/Inquire button, "More" suggestions
-- [x] About, Framing & mounting, Contact (validation, opens the visitor's email app), 404 page
+- [x] About, Framing & mounting, Contact (validation, Formspree-ready), 404 page
 - [x] Checked at desktop (1440px) and phone (390px) sizes; reduced-motion setting respected
 - [x] `.htaccess` (generated at build) so page links, 404s, and redirects work on Hostinger
 - [x] Accessibility pass: text contrast (all pass AA), labels, alt text, one h1 per page, 44px nav targets,
@@ -38,8 +38,10 @@ Clean, spacious, smooth, with the paintings and Olga's story up front.
 
 ## Waiting on Olga
 - [ ] **Stripe:** create a Payment Link for each painting she wants to sell online, then paste each link into `stripeLink`
-- [x] **Contact form:** opens the visitor's email app (a `mailto:` link) with a message to olga_tislina@yahoo.com,
-      ready to send. No outside service. Fallbacks: "Use Gmail instead" link and a copyable address.
+- [ ] **Contact form:** messages are emailed to olga_tislina@yahoo.com through FormSubmit (formsubmit.co).
+      The first message sent from the live site triggers an "Activate Form" email to Olga. She must click it
+      (check spam too); nothing is delivered until then. Afterwards, put the alias FormSubmit gives her in the `.env` file
+      as `VITE_FORMSUBMIT_KEY=...` and re-upload, so the email address isn't visible in the site's code.
 - [ ] **Framing page:** confirm the frame and mounting options. The old text may have been Squarespace template copy.
       Once confirmed, the framing page's search description in `src/seo.js` can name the options.
 - [ ] **Look & feel:** does Olga like the font (Fraunces) and the amount of color? Both are easy to adjust.
