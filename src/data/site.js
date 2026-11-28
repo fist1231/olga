@@ -22,12 +22,46 @@ export const schools = [
   { name: "Woodstock School of Art", place: "Woodstock, New York" },
 ];
 
+// Each category also gets its own page (/collections/<slug>) so people searching for, say,
+// "watercolor paintings for sale" can land on it. heading/seoTitle/description/intro are the words on that page.
 export const categories = [
-  { name: "Paintings", dot: "#c23a6e", blurb: "Oil paintings of flowers, still life, and places she has traveled." },
-  { name: "Abstract", dot: "#8a73c6", blurb: "Acrylic explorations in color and texture." },
-  { name: "Watercolor", dot: "#4f7fc4", blurb: "Snowy villages, quiet seasides, and city streets." },
-  { name: "Drawings", dot: "#6e6e73", blurb: "Charcoal sketches, available as limited prints." },
+  {
+    name: "Paintings", slug: "oil-paintings", dot: "#c23a6e",
+    blurb: "Oil paintings of flowers, still life, and places she has traveled.",
+    heading: "Oil paintings",
+    seoTitle: "Original oil paintings for sale",
+    description: "Original oil paintings by Olga Tislina: flowers, still life, and the places she has traveled. Browse the collection and inquire to buy.",
+    intro: "Oil paintings of flowers, still life, and the places Olga has traveled, from rose gardens on Crete to a street corner in Riga.",
+  },
+  {
+    name: "Abstract", slug: "abstract-paintings", dot: "#8a73c6",
+    blurb: "Acrylic explorations in color and texture.",
+    heading: "Abstract paintings",
+    seoTitle: "Original abstract paintings for sale",
+    description: "Original abstract acrylic paintings by Olga Tislina: explorations in color and texture. Browse the collection and inquire to buy.",
+    intro: "Acrylic explorations in color and texture.",
+  },
+  {
+    name: "Watercolor", slug: "watercolor-paintings", dot: "#4f7fc4",
+    blurb: "Snowy villages, quiet seasides, and city streets.",
+    heading: "Watercolor paintings",
+    seoTitle: "Original watercolor paintings for sale",
+    description: "Original watercolor paintings by Olga Tislina: snowy villages, quiet seasides, and city streets. Browse the collection and inquire to buy.",
+    intro: "Snowy villages, quiet seasides, and city streets, painted in watercolor.",
+  },
+  {
+    name: "Drawings", slug: "charcoal-drawings", dot: "#6e6e73",
+    blurb: "Charcoal sketches, available as limited prints.",
+    heading: "Charcoal drawings and prints",
+    seoTitle: "Charcoal drawings and limited prints",
+    description: "Charcoal drawings by Olga Tislina, available as limited prints: travel sketches and portraits of pets. Browse and inquire to buy.",
+    intro: "Charcoal sketches, available as limited prints.",
+  },
 ];
+
+export const collectionPath = (c) => `/collections/${c.slug}`;
+export const collectionBySlug = Object.fromEntries(categories.map((c) => [c.slug, c]));
+export const categoryByName = Object.fromEntries(categories.map((c) => [c.name, c]));
 
 // The paintings shown in the big scrolling showcase on the home page.
 // Swap slugs here to change which works are featured.

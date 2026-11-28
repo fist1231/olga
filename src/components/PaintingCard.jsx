@@ -14,7 +14,7 @@ export default function PaintingCard({ painting }) {
     <Link to={`/shop/${painting.slug}`} className="card" style={{ "--art": painting.color }}>
       <div className="card-frame">
         <div className="card-mat">
-          <img src={img.thumb} alt="" loading="lazy" width={img.width} height={img.height} />
+          <img src={img.thumb} alt={painting.title} loading="lazy" width={img.width} height={img.height} />
         </div>
         {painting.status === "sold" && <span className="card-badge">Sold</span>}
       </div>

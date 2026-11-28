@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import Lightbox from "../components/Lightbox.jsx";
 import PaintingCard from "../components/PaintingCard.jsx";
-import { bySlug, formatPrice, paintings, site } from "../data/site.js";
+import { bySlug, categoryByName, collectionPath, formatPrice, paintings, site } from "../data/site.js";
 import NotFound from "./NotFound.jsx";
 import "./Painting.css";
 
@@ -53,7 +53,7 @@ export default function Painting() {
       <nav className="crumbs" aria-label="Breadcrumb">
         <Link to="/shop">Shop</Link>
         <span aria-hidden="true">/</span>
-        <Link to={`/shop?category=${p.category}`}>{p.category}</Link>
+        <Link to={collectionPath(categoryByName[p.category])}>{categoryByName[p.category].heading}</Link>
       </nav>
 
       <div className="painting-grid">

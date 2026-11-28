@@ -5,6 +5,7 @@ import Nav from "./components/Nav.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import Shop from "./pages/Shop.jsx";
+import Collection from "./pages/Collection.jsx";
 import Painting from "./pages/Painting.jsx";
 import About from "./pages/About.jsx";
 import Framing from "./pages/Framing.jsx";
@@ -40,6 +41,7 @@ export default function App() {
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/collections/:slug" element={<Collection />} />
             <Route path="/shop/:slug" element={<Painting />} />
             <Route path="/about" element={<About />} />
             <Route path="/framing" element={<Framing />} />

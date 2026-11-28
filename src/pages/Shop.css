@@ -89,3 +89,8 @@
     padding: 0 var(--s2);
   }
 }
+
+.collection-more {
+  margin-top: var(--s8);
+  color: var(--graphite);
+}

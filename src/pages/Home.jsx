@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Hero from "../components/Hero.jsx";
 import StoryReveal from "../components/StoryReveal.jsx";
 import StickyShowcase from "../components/StickyShowcase.jsx";
-import { categories, coverFor, featured, paintings } from "../data/site.js";
+import { categories, collectionPath, coverFor, featured, paintings } from "../data/site.js";
 import "./Home.css";
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
               return (
                 <Link
                   key={c.name}
-                  to={`/shop?category=${c.name}`}
+                  to={collectionPath(c)}
                   className="collection-tile"
                   style={{ "--art": c.dot }}
                 >

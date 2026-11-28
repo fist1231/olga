@@ -9,7 +9,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 const server = join(root, "dist-ssr");
 
-const { render, metaFor, allPaths, SITE_URL } = await import(pathToFileURL(join(server, "entry-server.js")).href);
+const { render, metaFor, allPaths, imagesFor, SITE_URL } = await import(pathToFileURL(join(server, "entry-server.js")).href);
 const template = await readFile(join(dist, "index.html"), "utf8");
 
 const esc = (v) => String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -45,10 +45,17 @@ for (const path of allPaths) {
 }
 await writeFile(join(dist, "404.html"), page("/404"));
 
-const urls = allPaths.map((p) => `  <url><loc>${esc(metaFor(p).canonical)}</loc></url>`);
+// Sitemap: every page with its last-built date, plus each painting's pictures (for Google Images).
+const today = new Date().toISOString().slice(0, 10);
+const urls = allPaths.map((p) => {
+  const images = imagesFor(p)
+    .map((im) => `<image:image><image:loc>${esc(im.loc)}</image:loc><image:title>${esc(im.title)}</image:title></image:image>`)
+    .join("");
+  return `  <url><loc>${esc(metaFor(p).canonical)}</loc><lastmod>${today}</lastmod>${images}</url>`;
+});
 await writeFile(
   join(dist, "sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join("\n")}\n</urlset>\n`,
 );
 await writeFile(join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
@@ -98,6 +105,11 @@ RewriteRule ^(.+)/$ /$1 [R=301,L]
 # Serve each clean address from its pre-built page: /shop/riga → /pages/shop/riga.html
 RewriteCond %{DOCUMENT_ROOT}/pages/$1.html -f
 RewriteRule ^(.+)$ /pages/$1.html [L]
+
+# Compress text files so pages load faster (speed is a Google ranking signal).
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json application/ld+json application/xml text/xml image/svg+xml
+</IfModule>
 
 # Browser caching: build files have unique names, so they can be kept for a year.
 <IfModule mod_headers.c>
